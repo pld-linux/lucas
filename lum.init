@@ -1,0 +1,72 @@
+#!/bin/sh
+#
+# lum		Start/stop LDAP Update Monitor
+#
+# chkconfig:	2345 84 25
+#
+# description:	LDAP Update Monitor is a deamon, working as a slave LDAP \
+#		server, that triggers scripts/programs, as soon as the \
+#		master tries to replicate changes.
+#
+
+# Source function library
+. /etc/rc.d/init.d/functions
+
+# Get network config
+. /etc/sysconfig/network
+
+# Get service config
+[ -f /etc/sysconfig/lum ] && . /etc/sysconfig/lum
+
+# Check that networking is up.
+if is_yes "${NETWORKING}"; then
+	if [ ! -f /var/lock/subsys/network -a "$1" != stop -a "$1" != status ]; then
+		msg_network_down OpenLDAP
+		exit 1
+	fi                                                             
+else
+	exit 0
+fi
+
+RETVAL=0
+# See how we were called.
+case "$1" in
+  start)
+	if [ ! -f /var/lock/subsys/lum ]; then
+		msg_starting "LDAP Update Monitor"
+		daemon lum -d -p $PORT -u $USERID -c /etc/lucas/lum.cfg
+		RETVAL=$?
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/lum
+	else
+		msg_already_running "LDAP Update Monitor"
+	fi
+	;;
+  stop)
+	if [ -f /var/lock/subsys/lum ]; then
+		msg_stopping "LDAP Update Monitor"
+		killproc lum
+		rm -f /var/lock/subsys/lum >/dev/null 2>&1
+	else
+		msg_not_running "LDAP Update Monitor"
+	fi
+	;;
+  status)
+	status lum
+	RETVAL=$?
+	;;
+  restart|force-reload)
+	$0 stop
+	$0 start
+	exit $?
+	;;
+  reload)
+	msg_reloading "LDAP Update Monitor"
+	killproc -HUP lum
+	;;
+  *)
+	echo "Usage: $0 {start|stop|status|restart|force-reload|reload}"
+	exit 3
+	;;
+esac
+
+exit $RETVAL
