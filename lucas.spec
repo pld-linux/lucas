@@ -1,4 +1,5 @@
 Summary:	Framework for configuring servers/services through LDAP
+Summary(pl):	Szkielet do konfigurowania serwerów/us³ug poprzez LDAP
 Name:		lucas
 Version:	1.0
 Release:	0.1
@@ -19,8 +20,16 @@ reacting to them. Currently it only consists of "lum" (LDAP Update
 Monitor), a deamon, working as a slave LDAP server, that triggers
 scripts/programs, as soon as the master tries to replicate changes.
 
+%description -l pl
+Lucas to szkielet do monitorowania baz danych LDAP pod k±tem zmian i
+reagowania na nie. Aktualnie sk³ada siê tylko z "lum" (LDAP Update
+Monitor) - demona dzia³aj±cego jako podleg³y (slave) serwer LDAP,
+wyzwalaj±cy skrypty/programy zaraz po tym, jak g³ówny serwer (master)
+próbuje zreplikowaæ zmiany.
+
 %package -n lum
 Summary:	LDAP Update Monitor
+Summary(pl):	LDAP Update Monitor - monitor uaktualnieñ LDAP
 Group:		Applications/System
 PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
@@ -46,7 +55,6 @@ zreplikowaæ zmiany.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8}
 install -d $RPM_BUILD_ROOT/etc/{rc.d/init.d,sysconfig,%{name}}
 
