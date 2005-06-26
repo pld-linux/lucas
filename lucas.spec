@@ -58,11 +58,11 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8}
 install -d $RPM_BUILD_ROOT/etc/{rc.d/init.d,sysconfig,%{name}}
 
-install src/lum/lum $RPM_BUILD_ROOT/%{_sbindir}
-install doc/*.8 $RPM_BUILD_ROOT/%{_mandir}/man8
+install src/lum/lum $RPM_BUILD_ROOT%{_sbindir}
+install doc/*.8 $RPM_BUILD_ROOT%{_mandir}/man8
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/lum
 install data/dist/suse/lum.sysconfig $RPM_BUILD_ROOT/etc/sysconfig/lum
-install data/lum.cfg $RPM_BUILD_ROOT/%{_sysconfdir}/%{name}
+install data/lum.cfg $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
