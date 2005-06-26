@@ -1,4 +1,3 @@
-
 Summary:	Framework for configuring servers/services through LDAP
 Name:		lucas
 Version:	1.0
@@ -48,14 +47,17 @@ zreplikowaæ zmiany.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT/{%{_sbindir},%{_mandir}/man8}
-install -d $RPM_BUILD_ROOT/%{_sysconfdir}/{rc.d/init.d,sysconfig,%{name}}
+install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8}
+install -d $RPM_BUILD_ROOT/etc/{rc.d/init.d,sysconfig,%{name}}
 
 install src/lum/lum $RPM_BUILD_ROOT/%{_sbindir}
 install doc/*.8 $RPM_BUILD_ROOT/%{_mandir}/man8
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/lum
-install data/dist/suse/lum.sysconfig $RPM_BUILD_ROOT/%{_sysconfdir}/sysconfig/lum
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/lum
+install data/dist/suse/lum.sysconfig $RPM_BUILD_ROOT/etc/sysconfig/lum
 install data/lum.cfg $RPM_BUILD_ROOT/%{_sysconfdir}/%{name}
+
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %pre -n lum
 %useradd -P lum -u 152 -s /bin/false -c "LDAP Update Monitor" -g nobody lum
@@ -91,6 +93,3 @@ fi
 %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/lum
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/lum.cfg
-
-%clean
-rm -rf $RPM_BUILD_ROOT
