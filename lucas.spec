@@ -31,7 +31,7 @@ próbuje zreplikowaæ zmiany.
 Summary:	LDAP Update Monitor
 Summary(pl):	LDAP Update Monitor - monitor uaktualnieñ LDAP
 Group:		Applications/System
-PreReq:		rc-scripts
+Requires:	rc-scripts
 Requires(post,preun):	/sbin/chkconfig
 Requires(pre):	/bin/id
 Requires(pre):	/usr/sbin/useradd
@@ -72,17 +72,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post -n lum
 /sbin/chkconfig --add lum
-if [ -f /var/lock/subsys/lum ]; then
-	/etc/rc.d/init.d/lum restart >&2
-else
-	echo "Run \"/etc/rc.d/init.d/lum start\" to start lum service." >&2
-fi
+%service lum restart
 
 %preun -n lum
 if [ "$1" = "0" ]; then
-	if [ -f /var/lock/subsys/lum ]; then
-		/etc/rc.d/init.d/lum stop
-	fi
+	%service lum stop
 	/sbin/chkconfig --del lum
 fi
 
