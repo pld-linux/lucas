@@ -11,7 +11,7 @@ Source1:	lum.init
 URL:		http://www.home.unix-ag.org/patrick/
 BuildRequires:	groff
 BuildRequires:	openldap-devel
-BuildRequires:	rpmbuild(macros) >= 1.202
+BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
