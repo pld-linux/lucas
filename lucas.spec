@@ -17,7 +17,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Lucas is a framework to monitor LDAP databases for changes and
 reacting to them. Currently it only consists of "lum" (LDAP Update
-Monitor), a deamon, working as a slave LDAP server, that triggers
+Monitor), a daemon, working as a slave LDAP server, that triggers
 scripts/programs, as soon as the master tries to replicate changes.
 
 %description -l pl
@@ -37,7 +37,7 @@ Requires(pre):	/bin/id
 Requires(pre):	/usr/sbin/useradd
 
 %description -n lum
-LDAP Update Monitor is a deamon, working as a slave LDAP server, that
+LDAP Update Monitor is a daemon, working as a slave LDAP server, that
 triggers scripts/programs, as soon as the master tries to replicate
 changes.
 
