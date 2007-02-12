@@ -1,5 +1,5 @@
 Summary:	Framework for configuring servers/services through LDAP
-Summary(pl):	Szkielet do konfigurowania serwerów/us³ug poprzez LDAP
+Summary(pl.UTF-8):   Szkielet do konfigurowania serwerÃ³w/usÅ‚ug poprzez LDAP
 Name:		lucas
 Version:	1.0
 Release:	0.1
@@ -20,16 +20,16 @@ reacting to them. Currently it only consists of "lum" (LDAP Update
 Monitor), a daemon, working as a slave LDAP server, that triggers
 scripts/programs, as soon as the master tries to replicate changes.
 
-%description -l pl
-Lucas to szkielet do monitorowania baz danych LDAP pod k±tem zmian i
-reagowania na nie. Aktualnie sk³ada siê tylko z "lum" (LDAP Update
-Monitor) - demona dzia³aj±cego jako podleg³y (slave) serwer LDAP,
-wyzwalaj±cy skrypty/programy zaraz po tym, jak g³ówny serwer (master)
-próbuje zreplikowaæ zmiany.
+%description -l pl.UTF-8
+Lucas to szkielet do monitorowania baz danych LDAP pod kÄ…tem zmian i
+reagowania na nie. Aktualnie skÅ‚ada siÄ™ tylko z "lum" (LDAP Update
+Monitor) - demona dziaÅ‚ajÄ…cego jako podlegÅ‚y (slave) serwer LDAP,
+wyzwalajÄ…cy skrypty/programy zaraz po tym, jak gÅ‚Ã³wny serwer (master)
+prÃ³buje zreplikowaÄ‡ zmiany.
 
 %package -n lum
 Summary:	LDAP Update Monitor
-Summary(pl):	LDAP Update Monitor - monitor uaktualnieñ LDAP
+Summary(pl.UTF-8):   LDAP Update Monitor - monitor uaktualnieÅ„ LDAP
 Group:		Applications/System
 Requires:	rc-scripts
 Requires(post,preun):	/sbin/chkconfig
@@ -41,10 +41,10 @@ LDAP Update Monitor is a daemon, working as a slave LDAP server, that
 triggers scripts/programs, as soon as the master tries to replicate
 changes.
 
-%description -n lum -l pl
-LDAP Update Monitor jest demonem pracuj±cym jako serwer LDAP w trybie
-"slave" i wykonuj±cym skrypty programy jak tylko "master" próbuje
-zreplikowaæ zmiany.
+%description -n lum -l pl.UTF-8
+LDAP Update Monitor jest demonem pracujÄ…cym jako serwer LDAP w trybie
+"slave" i wykonujÄ…cym skrypty programy jak tylko "master" prÃ³buje
+zreplikowaÄ‡ zmiany.
 
 %prep
 %setup -q
