@@ -1,5 +1,5 @@
 Summary:	Framework for configuring servers/services through LDAP
-Summary(pl.UTF-8):   Szkielet do konfigurowania serwerów/usług poprzez LDAP
+Summary(pl.UTF-8):	Szkielet do konfigurowania serwerów/usług poprzez LDAP
 Name:		lucas
 Version:	1.0
 Release:	0.1
@@ -29,7 +29,7 @@ próbuje zreplikować zmiany.
 
 %package -n lum
 Summary:	LDAP Update Monitor
-Summary(pl.UTF-8):   LDAP Update Monitor - monitor uaktualnień LDAP
+Summary(pl.UTF-8):	LDAP Update Monitor - monitor uaktualnień LDAP
 Group:		Applications/System
 Requires:	rc-scripts
 Requires(post,preun):	/sbin/chkconfig
