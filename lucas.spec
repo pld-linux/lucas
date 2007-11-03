@@ -10,7 +10,7 @@ Source0:	http://www.home.unix-ag.org/patrick/software/lucas/%{name}-%{version}.t
 Source1:	lum.init
 URL:		http://www.home.unix-ag.org/patrick/
 BuildRequires:	groff
-BuildRequires:	openldap-devel
+BuildRequires:	openldap-devel >= 2.4.6
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
